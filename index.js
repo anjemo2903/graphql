@@ -26,10 +26,7 @@ async function startServer() {
   await server.start();
   server.applyMiddleware({ app });
 
-  mongoose.connect("mongodb+srv://molinajesus2003:weJyz3uFbpRRcg2M@cluster0.orvrvph.mongodb.net/DB_Aventados", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }).then(() => {
+  mongoose.connect("mongodb+srv://molinajesus2003:weJyz3uFbpRRcg2M@cluster0.orvrvph.mongodb.net/DB_Aventados").then(() => {
     console.log('Connected to MongoDB');
   }).catch(err => {
     console.error('Error connecting to MongoDB:', err);

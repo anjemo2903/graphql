@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type Ride {
-    id: ID!
+    _id: ID!
     departureFrom: String!
     arriveTo: String!
     days: Days!
@@ -31,14 +31,16 @@ const typeDefs = gql`
 
   type User {
     id: ID!
-    firstName: String!
-    lastName: String!
+    first_name: String!
+    last_name: String!
     email: String!
   }
 
   type Query {
     rides: [Ride]
+    ridesByUser(userId: ID!): [Ride]
     findRides(departureFrom: String!, arriveTo: String!): [Ride]
+    searchRides(from: String, to: String, days: [String]): [Ride]
   }
 `;
 

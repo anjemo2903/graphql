@@ -1,16 +1,29 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  type VehicleDetails {
+    make: String
+    model: String
+    year: Int
+  }
+
+  type Ride {
+    _id: ID
+    departureFrom: String
+    arriveTo: String
+    seats: Int
+    vehicleDetails: VehicleDetails
+    fee: Float
+  }
+
   type Booking {
-    id: ID!
-    user: User!
-    ride: Ride!
-    createdAt: String!
-    updatedAt: String!
+    _id: ID
+    user: ID
+    ride: Ride
   }
 
   type Query {
-    bookingsByDriver(driverId: ID!): [Booking!]!
+    bookingsByUser(userId: ID!): [Booking]
   }
 `;
 
